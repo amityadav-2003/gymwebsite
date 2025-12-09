@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +21,7 @@
       --dark-light: #1a1a1a;
       --gray: #888;
       --white: #ffffff;
+      --gold: #ffd700;
     }
 
     body {
@@ -28,20 +31,46 @@
       overflow-x: hidden;
     }
 
-    /* Animated Gradient Background */
+    /* Advanced Background */
     .bg-gradient {
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse at 20% 30%, rgba(255, 59, 0, 0.15) 0%, transparent 50%),
-                  radial-gradient(ellipse at 80% 70%, rgba(255, 59, 0, 0.08) 0%, transparent 50%);
-      animation: pulse 8s ease-in-out infinite;
+      background: 
+        radial-gradient(ellipse at 10% 20%, rgba(255, 59, 0, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 80%, rgba(255, 119, 0, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(255, 59, 0, 0.05) 0%, transparent 60%);
+      animation: pulse 10s ease-in-out infinite;
       pointer-events: none;
       z-index: 0;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.7; }
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+
+    /* Particle Effect */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(255, 59, 0, 0.3);
+      border-radius: 50%;
+      animation: float-particle 15s infinite;
+    }
+
+    @keyframes float-particle {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
     }
 
     .content-wrapper {
@@ -49,22 +78,23 @@
       z-index: 1;
     }
 
-    /* Header */
+    /* Header with Glassmorphism */
     header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      backdrop-filter: blur(20px);
-      background: rgba(10, 10, 10, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(10, 10, 10, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     header.scrolled {
       background: rgba(10, 10, 10, 0.95);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      border-bottom-color: rgba(255, 59, 0, 0.3);
     }
 
     nav {
@@ -77,235 +107,361 @@
     }
 
     .logo {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 900;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, var(--fire), #ff7700);
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--fire), #ff7700, var(--gold));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      position: relative;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 59, 0, 0.5)); }
+      50% { filter: drop-shadow(0 0 15px rgba(255, 59, 0, 0.8)); }
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       list-style: none;
       align-items: center;
     }
 
     .nav-links a {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
+      font-weight: 600;
+      font-size: 0.95rem;
       transition: all 0.3s ease;
       position: relative;
+      /* padding: -0.5rem 0 !important; */
     }
 
-    .nav-links a::after {
+    .nav-links a::before {
       content: '';
       position: absolute;
-      bottom: -5px;
-      left: 0;
+      bottom: 0;
+      left: 50%;
       width: 0;
       height: 2px;
-      background: var(--fire);
-      transition: width 0.3s ease;
+      background: linear-gradient(90deg, var(--fire), var(--gold));
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
     }
 
     .nav-links a:hover {
       color: var(--white);
     }
 
-    .nav-links a:hover::after {
+    .nav-links a:hover::before {
       width: 100%;
     }
 
     .cta-btn {
-      background: var(--fire);
+      background: linear-gradient(135deg, var(--fire), #ff7700);
       color: var(--white);
-      padding: 0.7rem 1.5rem;
+      padding: 0.75rem 1.8rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 20px rgba(255, 59, 0, 0.3);
+      box-shadow: 0 5px 25px rgba(255, 59, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #ff7700, var(--gold));
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .cta-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.5);
-      background: var(--fire-dark);
+      box-shadow: 0 10px 35px rgba(255, 59, 0, 0.6);
+          color: var(--white);
     }
 
-    /* Hero Section */
+    .cta-btn:hover::before {
+      
+      opacity: 1;
+    }
+
+    .cta-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero with 3D Effect */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8rem 2rem 4rem;
+      padding: 5rem 2rem 4rem;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 59, 0, 0.2) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      animation: pulse-circle 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-circle {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
     }
 
     .hero-grid {
       max-width: 1400px;
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 5rem;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-content h1 {
-      font-size: 5rem;
+      font-size: 5.5rem;
       font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 1.8rem;
+      letter-spacing: -3px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-content h1 span {
-      background: linear-gradient(135deg, var(--fire), #ff7700);
+      background: linear-gradient(135deg, var(--fire), #ff7700, var(--gold));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      display: block;
+      animation: shimmer 3s ease-in-out infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .hero-subtitle {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 2rem;
-      line-height: 1.6;
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      animation: fadeInUp 1s ease-out 0.2s backwards;
     }
 
     .hero-stats {
       display: flex;
       gap: 3rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease-out 0.4s backwards;
     }
 
     .stat {
       text-align: center;
+      position: relative;
+    }
+
+    .stat::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--fire), var(--gold));
+      border-radius: 10px;
     }
 
     .stat-number {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 900;
-      color: var(--fire);
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       display: block;
       line-height: 1;
     }
 
     .stat-label {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.5);
-      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 1.2rem;
       flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.6s backwards;
     }
 
     .btn-primary {
-      background: var(--fire);
+      /* background: linear-gradient(135deg, var(--fire), #35eb0c); */
+      background-color: green;
       color: var(--white);
-      padding: 1rem 2.5rem;
+      padding: 1.2rem 3rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.4);
+      font-size: 1.05rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 35px rgba(255, 59, 0, 0.4);
       display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      /* background: linear-gradient(135deg, #ff7700, var(--gold)); */
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(0);
+    }
+
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(255, 59, 0, 0.6);
+      /* box-shadow: 0 15px 45px rgba(8, 218, 47, 0.6); */
     }
 
     .btn-secondary {
       background: rgba(255, 255, 255, 0.05);
       color: var(--white);
-      padding: 1rem 2.5rem;
+      padding: 1.2rem 3rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      font-size: 1.05rem;
+      transition: all 0.4s ease;
+      border: 2px solid rgba(255, 255, 255, 0.2);
       display: inline-block;
+      backdrop-filter: blur(10px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 59, 0, 0.1);
       border-color: var(--fire);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.3);
     }
 
-    /* Hero Visual */
+    /* 3D Hero Visual */
     .hero-visual {
       position: relative;
-      height: 600px;
+      height: 650px;
+      perspective: 1000px;
     }
 
     .visual-card {
       position: absolute;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 1.5rem;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      animation: float 6s ease-in-out infinite;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      padding: 2rem;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .visual-card:hover {
+      transform: translateZ(30px) rotateY(5deg);
+      border-color: var(--fire);
+      box-shadow: 0 30px 80px rgba(255, 59, 0, 0.4);
     }
 
     .visual-card:nth-child(1) {
       top: 50px;
       left: 0;
-      width: 280px;
-      animation-delay: 0s;
+      width: 300px;
+      animation: float 6s ease-in-out infinite;
     }
 
     .visual-card:nth-child(2) {
       top: 250px;
-      right: 50px;
-      width: 250px;
-      animation-delay: 1s;
+      right: 20px;
+      width: 270px;
+      animation: float 6s ease-in-out infinite 1s;
     }
 
     .visual-card:nth-child(3) {
       bottom: 50px;
-      left: 80px;
-      width: 220px;
-      animation-delay: 2s;
+      left: 0px;
+      width: 280px;
+      animation: float 6s ease-in-out infinite 2s;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+      0%, 100% { transform: translateY(0) rotateX(0); }
+      50% { transform: translateY(-25px) rotateX(2deg); }
     }
 
     .card-title {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
+      font-weight: 700;
     }
 
     .card-value {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 900;
-      color: var(--fire);
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 5px 15px rgba(255, 59, 0, 0.5));
     }
 
     /* Section Styling */
     section {
-      padding: 6rem 2rem;
+      padding: 1rem 2rem;
       position: relative;
     }
 
@@ -316,226 +472,368 @@
 
     .section-header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
     }
 
     .section-label {
       display: inline-block;
-      background: rgba(255, 59, 0, 0.1);
+      background: linear-gradient(135deg, rgba(255, 59, 0, 0.15), rgba(255, 119, 0, 0.15));
       color: var(--fire);
-      padding: 0.5rem 1.2rem;
+      padding: 0.6rem 1.5rem;
       border-radius: 50px;
       font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 59, 0, 0.3);
+      backdrop-filter: blur(10px);
     }
 
     .section-title {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 900;
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+      letter-spacing: -2px;
+      line-height: 1.1;
     }
 
     .section-subtitle {
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.5);
-      max-width: 600px;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 700px;
       margin: 0 auto;
+      line-height: 1.7;
     }
 
-    /* Facilities Grid */
+    /* Facilities with Advanced Hover */
     .facilities-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
 
     .facility-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 25px;
+      padding: 2.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .facility-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 59, 0, 0.1), rgba(255, 119, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .facility-card:hover::before {
+      opacity: 1;
     }
 
     .facility-card:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       border-color: var(--fire);
-      transform: translateY(-5px);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(255, 59, 0, 0.3);
     }
 
     .facility-icon {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       background: linear-gradient(135deg, var(--fire), #ff7700);
-      border-radius: 15px;
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.4);
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .facility-card:hover .facility-icon {
+      transform: rotateY(360deg) scale(1.1);
+      box-shadow: 0 15px 40px rgba(255, 59, 0, 0.6);
     }
 
     .facility-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
       font-weight: 700;
+      position: relative;
+      z-index: 1;
     }
 
     .facility-card p {
-      color: rgba(255, 255, 255, 0.6);
-      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Membership Plans */
+    /* Membership with Premium Cards */
     .plans-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
     }
 
     .plan-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 2px solid rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2.5rem;
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      padding: 3rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
+      overflow: hidden;
+    }
+
+    .plan-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 59, 0, 0.05), rgba(255, 119, 0, 0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--fire);
+      box-shadow: 0 25px 70px rgba(255, 59, 0, 0.3);
+    }
+
+    .plan-card:hover::before {
+      opacity: 1;
     }
 
     .plan-card.featured {
       border-color: var(--fire);
-      background: rgba(255, 59, 0, 0.05);
+      background: rgba(255, 59, 0, 0.08);
       transform: scale(1.05);
+      box-shadow: 0 20px 60px rgba(255, 59, 0, 0.4);
+    }
+
+    .plan-card.featured:hover {
+      transform: scale(1.08) translateY(-10px);
     }
 
     .plan-badge {
       position: absolute;
-      top: -15px;
+      top: 15px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--fire);
+      background: linear-gradient(135deg, var(--fire), #ff7700);
       color: var(--white);
-      padding: 0.4rem 1.2rem;
+      padding: 0.5rem 1.5rem;
       border-radius: 50px;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 20px rgba(255, 59, 0, 0.5);
     }
 
     .plan-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
       font-weight: 700;
+      position: relative;
+      z-index: 1;
     }
 
     .plan-price {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 900;
-      color: var(--fire);
-      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .plan-features {
       list-style: none;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .plan-features li {
-      padding: 0.8rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      color: rgba(255, 255, 255, 0.7);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .plan-features li:hover {
+      color: var(--white);
+      padding-left: 0.5rem;
     }
 
     .plan-features li::before {
       content: '✓';
       color: var(--fire);
       font-weight: 900;
-      margin-right: 0.8rem;
+      margin-right: 1rem;
+      font-size: 1.2rem;
     }
 
-    /* Trainers */
+    /* Trainers with 3D Cards */
     .trainers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
     }
 
     .trainer-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 30px;
+      padding: 3rem;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trainer-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 59, 0, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .trainer-card:hover::before {
+      opacity: 1;
     }
 
     .trainer-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
       border-color: var(--fire);
+      box-shadow: 0 25px 70px rgba(255, 59, 0, 0.3);
     }
 
     .trainer-avatar {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--fire), #ff7700);
+      background: linear-gradient(135deg, var(--fire), #ff7700, var(--gold));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 900;
-      margin: 0 auto 1.5rem;
-      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.3);
+      margin: 0 auto 2rem;
+      box-shadow: 0 15px 40px rgba(255, 59, 0, 0.5);
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trainer-card:hover .trainer-avatar {
+      transform: scale(1.1) rotateZ(5deg);
+      box-shadow: 0 20px 50px rgba(255, 59, 0, 0.7);
     }
 
     .trainer-card h3 {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .trainer-role {
       color: var(--fire);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Reviews */
+    .trainer-card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Reviews with Modern Style */
     .reviews-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
 
     .review-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 25px;
+      padding: 2.5rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .review-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 8rem;
+      color: rgba(255, 59, 0, 0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--fire);
+      box-shadow: 0 20px 50px rgba(255, 59, 0, 0.2);
     }
 
     .review-stars {
-      color: #ffd700;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.4));
     }
 
     .review-text {
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
-      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
       font-style: italic;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
     }
 
     .review-author {
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.5);
       font-size: 0.9rem;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
     }
 
     /* Contact Section */
@@ -543,7 +841,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     .contact-info {
@@ -553,40 +851,52 @@
     }
 
     .info-item {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .info-item:hover {
+      border-color: var(--fire);
+      transform: translateX(5px);
+      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.2);
     }
 
     .info-item h4 {
       color: var(--fire);
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
       font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
+      font-weight: 700;
     }
 
     .info-item p {
       color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
     }
 
     .info-item a {
       color: var(--fire);
       text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
 
     .info-item a:hover {
+      color: var(--gold);
       text-decoration: underline;
     }
 
     /* Footer */
     footer {
       background: var(--dark-light);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 3rem 2rem 1.5rem;
-      margin-top: 6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 4rem 2rem 2rem;
+      margin-top: 8rem;
     }
 
     .footer-content {
@@ -594,23 +904,29 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 2rem;
+      gap: 4rem;
+      margin-bottom: 3rem;
     }
 
     .footer-brand h3 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .footer-brand p {
-      color: rgba(255, 255, 255, 0.5);
-      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
     }
 
     .footer-links h4 {
-      margin-bottom: 1rem;
-      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--fire);
     }
 
     .footer-links ul {
@@ -618,25 +934,27 @@
     }
 
     .footer-links li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
     }
 
     .footer-links a {
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      display: inline-block;
     }
 
     .footer-links a:hover {
       color: var(--fire);
+      transform: translateX(5px);
     }
 
     .footer-bottom {
       text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 0.9rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.95rem;
     }
 
     /* Mobile Menu */
@@ -645,8 +963,24 @@
       background: none;
       border: none;
       color: var(--white);
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      color: var(--fire);
+    }
+
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--fire), var(--gold));
+      z-index: 101;
+      transition: width 0.1s ease;
     }
 
     /* Responsive */
@@ -654,10 +988,11 @@
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 3rem;
       }
 
       .hero-content h1 {
-        font-size: 3.5rem;
+        font-size: 4rem;
       }
 
       .hero-stats {
@@ -691,11 +1026,12 @@
       }
 
       .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
+        letter-spacing: -2px;
       }
 
       .section-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
 
       .plans-grid,
@@ -707,25 +1043,35 @@
 
       .footer-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      section {
+        padding: 5rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Animated Background -->
   <div class="bg-gradient"></div>
+  <div class="particles" id="particles"></div>
   
   <div class="content-wrapper">
     <!-- Header -->
     <header id="header">
       <nav>
-        <div class="logo">SHAILU'S</div>
+        <div class="logo"><a href="#home">SHAILU'S </a></div>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#facilities">Facilities</a></li>
           <li><a href="#trainers">Trainers</a></li>
           <li><a href="#membership">Membership</a></li>
           <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#contact" class="cta-btn">Join Now</a></li>
+          <li><a href="#contact" class="cta-btn"><span>Join Now</span></a></li>
         </ul>
         <button class="mobile-menu-btn">☰</button>
       </nav>
@@ -736,45 +1082,48 @@
       <div class="hero-grid">
         <div class="hero-content">
           <h1>
-            Transform Your<br>
+            Transform Your
             <span>Body & Mind</span>
           </h1>
           <p class="hero-subtitle">
-            Premium fitness experience in the heart of Indore. Modern equipment, expert trainers, and a community that pushes you to be your best.
+            Experience premium fitness in the heart of Indore. Modern equipment, expert trainers, and a community that pushes you to achieve greatness every single day.
           </p>
           
           <div class="hero-stats">
             <div class="stat">
               <span class="stat-number">500+</span>
-              <span class="stat-label">Active Members</span>
+              <span class="stat-label">Members</span>
             </div>
             <div class="stat">
               <span class="stat-number">4.8★</span>
-              <span class="stat-label">Google Rating</span>
+              <span class="stat-label">Rating</span>
             </div>
             <div class="stat">
               <span class="stat-number">3</span>
-              <span class="stat-label">Expert Trainers</span>
+              <span class="stat-label">Trainers</span>
             </div>
           </div>
 
           <div class="hero-buttons">
-            <a href="#contact" class="btn-primary">Start Free Trial</a>
+            <a href="#contact" class="btn-primary"><span>Start Free Trial</span></a>
             <a href="#facilities" class="btn-secondary">Explore Gym</a>
           </div>
         </div>
 
         <div class="hero-visual">
           <div class="visual-card">
-            <div class="card-title">Workout Hours</div>
-            <div class="card-value">6am - 12pm</div>
+            <div class="card-icon">⏰</div>
+            <div class="card-title">Training Hours</div>
+            <div class="card-value">6AM-12PM</div>
           </div>
           <div class="visual-card">
-            <div class="card-title">Premium Equipment</div>
-            <div class="card-value">Latest Tech</div>
+            <div class="card-icon">🏋️</div>
+            <div class="card-title">Equipment</div>
+            <div class="card-value">Premium</div>
           </div>
           <div class="visual-card">
-            <div class="card-title">Success Rate</div>
+            <div class="card-icon">🎯</div>
+            <div class="card-title">Success</div>
             <div class="card-value">95%</div>
           </div>
         </div>
@@ -794,37 +1143,37 @@
           <div class="facility-card">
             <div class="facility-icon">💪</div>
             <h3>Modern Equipment</h3>
-            <p>State-of-the-art machines and free weights for strength, cardio, and functional training</p>
+            <p>State-of-the-art machines and free weights for strength, cardio, and functional training tailored to your goals</p>
           </div>
 
           <div class="facility-card">
             <div class="facility-icon">❄️</div>
             <h3>Air Conditioning</h3>
-            <p>Temperature-controlled environment to keep you focused and comfortable during workouts</p>
+            <p>Temperature-controlled environment keeping you comfortable and focused during intense workout sessions</p>
           </div>
 
           <div class="facility-card">
             <div class="facility-icon">🏋️</div>
-            <h3>Spacious Workout Area</h3>
-            <p>Ample space for weight training, stretching, and floor exercises without crowding</p>
+            <h3>Spacious Area</h3>
+            <p>Ample space for weight training, stretching, and floor exercises without any crowding or waiting</p>
           </div>
 
           <div class="facility-card">
             <div class="facility-icon">🔒</div>
             <h3>Secure Lockers</h3>
-            <p>Safe storage for your belongings and convenient changing area</p>
+            <p>Safe storage for your belongings with convenient changing area and shower facilities</p>
           </div>
 
           <div class="facility-card">
             <div class="facility-icon">✨</div>
             <h3>Clean Interiors</h3>
-            <p>Hygienic, well-maintained floors with regular cleaning and sanitization</p>
+            <p>Hygienic, well-maintained floors with regular professional cleaning and sanitization protocols</p>
           </div>
 
           <div class="facility-card">
             <div class="facility-icon">👨‍🏫</div>
             <h3>Guided Sessions</h3>
-            <p>Expert support for warm-ups, form checks, and personalized workout planning</p>
+            <p>Expert support for warm-ups, form corrections, and personalized workout planning included</p>
           </div>
         </div>
       </div>
@@ -844,21 +1193,21 @@
             <div class="trainer-avatar">S</div>
             <h3>Shailu</h3>
             <div class="trainer-role">Head Coach</div>
-            <p>Certified strength & conditioning specialist focusing on fat loss and muscle building programs</p>
+            <p>Certified strength & conditioning specialist with 8+ years experience in fat loss and muscle building transformations</p>
           </div>
 
           <div class="trainer-card">
             <div class="trainer-avatar">A</div>
             <h3>Akash</h3>
             <div class="trainer-role">Personal Trainer</div>
-            <p>Customized workout plans and nutrition guidance for busy professionals</p>
+            <p>Expert in customized workout plans and nutrition guidance specifically designed for busy professionals</p>
           </div>
 
           <div class="trainer-card">
             <div class="trainer-avatar">P</div>
             <h3>Pooja</h3>
             <div class="trainer-role">Fitness Coach</div>
-            <p>Specializes in functional training, mobility, and beginner-friendly programs</p>
+            <p>Specializes in functional training, mobility work, and beginner-friendly programs for all fitness levels</p>
           </div>
         </div>
       </div>
@@ -870,47 +1219,50 @@
         <div class="section-header">
           <span class="section-label">Pricing</span>
           <h2 class="section-title">Choose Your Plan</h2>
-          <p class="section-subtitle">Flexible membership options designed for your fitness goals</p>
+          <p class="section-subtitle">Flexible membership options designed for your fitness goals and budget</p>
         </div>
 
         <div class="plans-grid">
           <div class="plan-card">
             <h3>Monthly</h3>
-            <div class="plan-price">₹₹</div>
+            <div class="plan-price">₹2000</div>
             <ul class="plan-features">
               <li>Full gym access</li>
               <li>Basic induction session</li>
               <li>Locker facility</li>
               <li>Open gym hours</li>
+              <li>Equipment training</li>
             </ul>
-            <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+            <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;"><span>Get Started</span></a>
           </div>
 
           <div class="plan-card featured">
             <div class="plan-badge">Most Popular</div>
             <h3>Quarterly</h3>
-            <div class="plan-price">₹₹₹</div>
+            <div class="plan-price">₹5000</div>
             <ul class="plan-features">
               <li>Personalized workout plan</li>
               <li>Progress tracking</li>
               <li>Priority trainer support</li>
               <li>Diet consultation</li>
               <li>All monthly features</li>
+              <li>Body composition analysis</li>
             </ul>
-            <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;">Join Now</a>
+            <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;"><span>Join Now</span></a>
           </div>
 
           <div class="plan-card">
             <h3>Yearly</h3>
-            <div class="plan-price">₹₹₹₹</div>
+            <div class="plan-price">₹15000</div>
             <ul class="plan-features">
               <li>Best value package</li>
               <li>Exclusive discounts</li>
               <li>Free body assessment</li>
-              <li>Guest passes</li>
+              <li>Guest passes (2/month)</li>
               <li>All quarterly features</li>
+              <li>Priority class booking</li>
             </ul>
-            <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;">Save More</a>
+            <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;"><span>Save More</span></a>
           </div>
         </div>
       </div>
@@ -922,10 +1274,16 @@
         <div class="section-header">
           <span class="section-label">Testimonials</span>
           <h2 class="section-title">What Members Say</h2>
-          <p class="section-subtitle">Real transformations, real results from our community</p>
+          <p class="section-subtitle">Real transformations and experiences from our fitness community</p>
         </div>
 
         <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Trainers are experienced and the floor has a healthy environment and positive vibes. Best gym in the area!"</p>
+            <p class="review-author">— Google Review</p>
+          </div>
+
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
             <p class="review-text">"Friendly environment with the best trainers. They have great experience and suggest what's best for you personally."</p>
@@ -977,20 +1335,27 @@
               <h4>⏰ Timings</h4>
               <p>Monday - Sunday<br>
               6:00 AM - 12:00 PM</p>
-              <p style="color: var(--fire); margin-top: 0.5rem;">Open 7 days a week!</p>
+              <p style="color: var(--fire); margin-top: 0.5rem; font-weight: 700;">Open 7 days a week!</p>
             </div>
           </div>
 
           <div class="contact-info">
-            <div class="info-item" style="padding: 2rem;">
-              <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Ready to Transform?</h3>
-              <p style="margin-bottom: 2rem; line-height: 1.8;">Join hundreds of members who have already transformed their lives at Shailu's Fitness Club. Get started with a free trial today!</p>
-              <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <a href="https://wa.me/919669608665" target="_blank" class="btn-primary" style="width: 100%; text-align: center;">WhatsApp Us</a>
-                <a href="tel:+919669608665" class="btn-secondary" style="width: 100%; text-align: center;">Call Now</a>
+            <div class="info-item" style="padding: 3rem; background: rgba(255, 59, 0, 0.05); border-color: var(--fire);">
+              <h3 style="margin-bottom: 1.5rem; font-size: 2rem; background: linear-gradient(135deg, var(--fire), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Ready to Transform?</h3>
+              <p style="margin-bottom: 2.5rem; line-height: 1.9; color: rgba(255, 255, 255, 0.8);">Join hundreds of members who have already transformed their lives at Shailu's Fitness Club. Get started with a free trial today!</p>
+              <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <a href="https://wa.me/919669608665" target="_blank" class="btn-primary" style="width: 100%; text-align: center;"><span>💬 WhatsApp Us</span></a>
+                <a href="tel:+919669608665" class="btn-secondary" style="width: 100%; text-align: center;">📞 Call Now</a>
               </div>
             </div>
+              <div class="info-item">
+              <h4>📞 Contact</h4>
+              
+              <button class="btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;"><span><a href="contact.html"> contact</a></span></button>
+            </div>
+
           </div>
+          
         </div>
       </div>
     </section>
@@ -1001,7 +1366,7 @@
         <div class="footer-brand">
           <h3>SHAILU'S FITNESS CLUB</h3>
           <p style="margin-bottom: 0.5rem;">शैलू'स फिटनेस क्लब</p>
-          <p>Transforming lives through fitness, dedication, and community. Your journey to a healthier, stronger you starts here.</p>
+          <p>Transforming lives through fitness, dedication, and community. Your journey to a healthier, stronger you starts here in Indore.</p>
         </div>
 
         <div class="footer-links">
@@ -1025,11 +1390,12 @@
         </div>
 
         <div class="footer-links">
-          <h4>Info</h4>
+          <h4>Information</h4>
           <ul>
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://www.google.com/maps?q=MVCJ%2BG8+Indore" target="_blank">Location</a></li>
+            <li><a href="#">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -1041,15 +1407,36 @@
   </div>
 
   <script>
-    // Scroll header effect
-    window.addEventListener('scroll', () => {
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Scroll progress bar
+    function updateScrollProgress() {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / scrollHeight) * 100;
+      scrollProgress.style.width = scrolled + '%';
+    }
+
+    // Header scroll effect
+    function handleHeaderScroll() {
       const header = document.getElementById('header');
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
-    });
+    }
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1064,6 +1451,19 @@
         }
       });
     });
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+    });
+
+    window.addEventListener('scroll', () => {
+      updateScrollProgress();
+      handleHeaderScroll();
+    });
+
+    // Initial call
+    updateScrollProgress();
   </script>
 </body>
 </html>
