@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAY'S IRON DEN THE GYM - Premium Gym in Indore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 25%, #FF6347 50%, #FF4500 75%, #FF6B6B 100%);
+            background-attachment: fixed;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 69, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(220, 20, 60, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 99, 71, 0.2) 0%, transparent 50%);
+            animation: moveBackground 15s ease-in-out infinite;
+        }
+
+        @keyframes moveBackground {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-50px, 50px) scale(1.1); }
+            66% { transform: translate(50px, -50px) scale(0.9); }
+        }
+
+        /* Glass Card with Magic Glow */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            box-shadow: 
+                0 8px 32px 0 rgba(220, 20, 60, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Navigation with Magic Effect */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            background: rgba(139, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 5px 30px rgba(220, 20, 60, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 69, 0, 0.4); }
+            50% { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 69, 0, 0.6); }
+        }
+
+        .logo span {
+            color: #FFD700;
+            text-shadow: 0 0 20px #FFD700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FF6347);
+            transition: width 0.3s;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 1);
+        }
+
+        /* Hero Section with Magic */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 50px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 69, 0, 0.6),
+                0 0 30px rgba(220, 20, 60, 0.4);
+            animation: title-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes title-glow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 10px rgba(255, 215, 0, 0.8),
+                    0 0 20px rgba(255, 69, 0, 0.6),
+                    0 0 30px rgba(220, 20, 60, 0.4);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 20px rgba(255, 215, 0, 1),
+                    0 0 40px rgba(255, 69, 0, 0.8),
+                    0 0 60px rgba(220, 20, 60, 0.6);
+            }
+        }
+
+        .hero-text .hindi {
+            font-size: 1.8em;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            animation: gradient-shift 3s ease infinite;
+            font-weight: bold;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        .hero-text p {
+            font-size: 1.3em;
+            margin-bottom: 35px;
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            font-size: 1.4em;
+        }
+
+        .stars {
+            color: #FFD700;
+            text-shadow: 0 0 10px #FFD700;
+            animation: star-twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes star-twinkle {
+            0%, 100% { text-shadow: 0 0 10px #FFD700; }
+            50% { text-shadow: 0 0 20px #FFD700, 0 0 30px #FFA500; }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-size: 1.1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347);
+            color: #8B0000;
+            box-shadow: 
+                0 5px 25px rgba(255, 215, 0, 0.6),
+                0 0 50px rgba(255, 99, 71, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 10px 40px rgba(255, 215, 0, 0.8),
+                0 0 70px rgba(255, 99, 71, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #FFD700;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-card {
+            padding: 40px;
+            text-align: center;
+            animation: float-card 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes float-card {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(1deg); }
+            75% { transform: translateY(-10px) rotate(-1deg); }
+        }
+
+        .gym-icon {
+            font-size: 180px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+            animation: icon-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes icon-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Stats Section with Magic Counters */
+        .stats {
+            padding: 100px 20px;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+        }
+
+        .stat-card {
+            padding: 50px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 99, 71, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s;
+            border-radius: 25px;
+            z-index: -1;
+        }
+
+        .stat-card:hover::after {
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 
+                0 15px 50px rgba(220, 20, 60, 0.6),
+                0 0 80px rgba(255, 99, 71, 0.4);
+        }
+
+        .stat-number {
+            font-size: 3.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1.3em;
+            opacity: 0.95;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5em;
+            margin-bottom: 70px;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.8),
+                0 0 40px rgba(255, 69, 0, 0.5);
+            animation: title-glow 3s ease-in-out infinite;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .feature-card {
+            padding: 45px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.05) rotate(2deg);
+            box-shadow: 
+                0 20px 60px rgba(220, 20, 60, 0.6),
+                0 0 100px rgba(255, 99, 71, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 80px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+            transition: all 0.5s;
+            display: inline-block;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2) rotateY(360deg);
+            filter: drop-shadow(0 0 40px rgba(255, 215, 0, 1));
+        }
+
+        .feature-card h3 {
+            font-size: 1.7em;
+            margin-bottom: 18px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card p {
+            line-height: 1.8;
+            opacity: 0.95;
+            font-size: 1.05em;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 100px 20px;
+        }
+
+        .reviews-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+        }
+
+        .review-card {
+            padding: 35px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 100px;
+            color: rgba(255, 215, 0, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 
+                0 15px 50px rgba(220, 20, 60, 0.5),
+                0 0 70px rgba(255, 99, 71, 0.3);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .review-stars {
+            color: #FFD700;
+            text-shadow: 0 0 10px #FFD700;
+            font-size: 1.3em;
+        }
+
+        .review-text {
+            line-height: 1.8;
+            opacity: 0.95;
+            font-size: 1.05em;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 100px 20px;
+        }
+
+        .location-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+        }
+
+        .location-info {
+            padding: 45px;
+        }
+
+        .info-item {
+            margin-bottom: 35px;
+            transition: all 0.3s;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+        }
+
+        .info-item h3 {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            font-size: 1.5em;
+        }
+
+        .info-item p {
+            line-height: 1.8;
+            opacity: 0.95;
+            font-size: 1.05em;
+        }
+
+        .timing-highlight {
+            color: #4ade80;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+        }
+
+        .map-container {
+            padding: 30px;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s;
+        }
+
+        .map-container:hover {
+            box-shadow: 
+                0 20px 60px rgba(220, 20, 60, 0.6),
+                inset 0 0 50px rgba(255, 215, 0, 0.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 20px;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 1.1em;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 18px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 1.05em;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 40px;
+            transition: all 0.4s;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+            transform: scale(1.3) rotateY(360deg);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        /* Magic Cursor Trail */
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8), transparent);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5em;
+            }
+
+            .location-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                AJAY'S <span>IRON DEN THE GYM</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Join Now</a></li>
+            </ul>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>AJAY'S IRON DEN</h1>
+                <p class="hindi">अजय'स आयरन डेन द जिम</p>
+                <div class="rating">
+                    <span class="stars">★★★★★</span>
+                    <span>4.8 (27 Reviews)</span>
+                </div>
+                <p>Transform Your Body, Transform Your Life. Experience the best gym in Indore with elite training, state-of-the-art equipment, and a community that pushes you to be your best.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Start Your Journey</a>
+                    <a href="#location" class="btn btn-secondary">Visit Us</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="glass hero-card">
+                    <div class="gym-icon">💪</div>
+                    <h3 style="font-size: 1.8em; margin-bottom: 15px;">Premium Fitness Experience</h3>
+                    <p style="font-size: 1.2em;">Your transformation starts here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="glass stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Active Members</div>
+            </div>
+            <div class="glass stat-card">
+                <div class="stat-number">4.8★</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="glass stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="glass stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose Iron Den?</h2>
+        <div class="features-grid">
+            <div class="glass feature-card">
+                <div class="feature-icon">🏋️</div>
+                <h3>Advanced Equipment</h3>
+                <p>State-of-the-art machines and free weights for all your training needs. Everything you need for cardio, functional, and weight training.</p>
+            </div>
+            <div class="glass feature-card">
+                <div class="feature-icon">👨‍🏫</div>
+                <h3>Elite Trainers</h3>
+                <p>Learn from Ajay Sir, a highly knowledgeable elite lifter with years of experience in transforming bodies and lives.</p>
+            </div>
+            <div class="glass feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Personalized Training</h3>
+                <p>Customized workout plans tailored to your fitness goals, whether you're a beginner or advanced athlete.</p>
+            </div>
+            <div class="glass feature-card">
+                <div class="feature-icon">💚</div>
+                <h3>Best Environment</h3>
+                <p>Motivating atmosphere with enough space to train comfortably. Join a community that supports your fitness journey.</p>
+            </div>
+            <div class="glass feature-card">
+                <div class="feature-icon">🏃</div>
+                <h3>Cardio Zone</h3>
+                <p>Dedicated cardio area with treadmills, cycles, and cross-trainers to boost your endurance and burn calories.</p>
+            </div>
+            <div class="glass feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Functional Training</h3>
+                <p>Functional training area for explosive strength, agility, and real-world fitness applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <h2 class="section-title">What Our Members Say</h2>
+        <div class="reviews-grid">
+            <div class="glass review-card">
+                <div class="review-header">
+                    <div class="reviewer-name">Mayur Shivhare</div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <p class="review-text">"A very good gym with all the required machines and enough space. Trainer and owner Ajay sir is highly knowledgeable and himself an elite lifter."</p>
+            </div>
+            <div class="glass review-card">
+                <div class="review-header">
+                    <div class="reviewer-name">Sujal Saini</div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <p class="review-text">"Best gym in the area. Best environment for workout. The equipment is top-notch and the atmosphere is incredibly motivating!"</p>
+            </div>
+            <div class="glass review-card">
+                <div class="review-header">
+                    <div class="reviewer-name">Prof. Dheeraj Mandloi</div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <p class="review-text">"Very good gym for cardio, functional training and weight training workout. Everything you need under one roof with professional guidance."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <h2 class="section-title">Visit Us Today</h2>
+        <div class="location-container">
+            <div class="glass location-info">
+                <div class="info-item">
+                    <h3>📍 Address</h3>
+                    <p>1, Khadwa Road, Khandwa Naka<br>
+                    Bhavna Nagar, Indore<br>
+                    Madhya Pradesh 452001</p>
+                </div>
+                <div class="info-item">
+                    <h3>⏰ Gym Timings</h3>
+                    <p><span class="timing-highlight">Opens: 6:00 AM Daily</span><br>
+                    Experience early morning workouts to kickstart your day with energy and motivation!</p>
+                </div>
+                <div class="info-item">
+                    <h3>📞 Get In Touch</h3>
+                    <p>Visit us to learn more about our membership plans and facilities. Our team is ready to help you achieve your fitness goals!</p>
+                </div>
+                <div class="info-item">
+                    <h3>🌟 Why Visit?</h3>
+                    <p>• Free trial session available<br>
+                    • Tour our facilities<br>
+                    • Meet our expert trainers<br>
+                    • Flexible membership plans</p>
+                </div>
+            </div>
+            <div class="glass map-container">
+                <div style="text-align: center;">
+                    <div style="font-size: 120px; margin-bottom: 25px; filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));">📍</div>
+                    <h3 style="color: #FFD700; margin-bottom: 20px; font-size: 2em; text-shadow: 0 0 20px #FFD700;">Find Us on Map</h3>
+                    <p style="margin-bottom: 30px; font-size: 1.2em;">Located at Khandwa Naka, Bhavna Nagar</p>
+                    <a href="https://www.google.com/maps/place/AJAY'S+IRON+DEN+THE+GYM/@22.6738292,75.8801444,17z" 
+                       target="_blank" 
+                       class="btn btn-primary">Open in Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Ready to Transform?</h2>
+        <div class="glass contact-container">
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Fitness Goals</label>
+                    <textarea placeholder="Tell us about your fitness goals and what you want to achieve..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Join Iron Den Today</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/irondenthegym/" target="_blank" title="Instagram">📷</a>
+            <a href="https://www.google.com/maps/place/AJAY'S+IRON+DEN+THE+GYM/@22.6738292,75.8801444,17z" target="_blank" title="Location">📍</a>
+        </div>
+        <p style="font-size: 1.1em;">&copy; 2024 AJAY'S IRON DEN THE GYM. All Rights Reserved.</p>
+        <p style="opacity: 0.8; margin-top: 15px; font-size: 1.05em;">Transform Your Body, Transform Your Life</p>
+    </footer>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button');
+            const originalText = btn.textContent;
+            btn.textContent = '✨ Processing...';
+            
+            setTimeout(() => {
+                alert('🎉 Thank you for your interest! We will contact you soon to discuss your fitness journey at Iron Den!');
+                event.target.reset();
+                btn.textContent = originalText;
+            }, 1000);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(el);
+        });
+
+        // Cursor trail effect
+        let cursorTrails = [];
+        const maxTrails = 10;
+
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 768) {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+                
+                cursorTrails.push(trail);
+                
+                if (cursorTrails.length > maxTrails) {
+                    const oldTrail = cursorTrails.shift();
+                    oldTrail.remove();
+                }
+                
+                setTimeout(() => {
+                    trail.style.opacity = '0';
+                    trail.style.transform = 'scale(2)';
+                }, 100);
+                
+                setTimeout(() => {
+                    trail.remove();
+                }, 600);
+            }
+        });
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroCard = document.querySelector('.hero-card');
+            if (heroCard) {
+                heroCard.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounter(element) {
+            const target = element.textContent;
+            const isNumber = !target.includes('★') && !target.includes('%');
+            
+            if (isNumber) {
+                const num = parseInt(target);
+                let current = 0;
+                const increment = num / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= num) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current) + '+';
+                    }
+                }, 30);
+            }
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target.querySelector('.stat-number');
+                    animateCounter(number);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            statsObserver.observe(card);
+        });
+    </script>
+</body>
+</html>

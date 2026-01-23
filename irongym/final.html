@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAY'S IRON DEN | The Real Hardcore Gym</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Oswald:wght@400;600;700&family=Black+Ops+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+
+        /* ===== MOBILE STICKY CTA ===== */
+.mobile-cta {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-cta {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #000;
+        border-top: 2px solid red;
+        z-index: 9999;
+        padding: 10px;
+    }
+
+    .mobile-cta button {
+        width: 100%;
+        background: linear-gradient(135deg, #ff0000, #8b0000);
+        color: #fff;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.2rem;
+        padding: 15px;
+        border: none;
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+}
+
+/* ===== MOBILE RESPONSIVE FIX ===== */
+
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+        border-bottom: 2px solid var(--primary);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    /* HERO */
+    .hero {
+        background-attachment: scroll;
+        padding: 0 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content h1 span {
+        font-size: 3.6rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-content div {
+        flex-direction: column;
+    }
+
+    .hero-content .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* STATS */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+
+    /* FEATURES */
+    .features {
+        padding: 60px 0;
+    }
+
+    /* PRICING */
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-card.popular {
+        transform: none;
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* CONTACT */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .info-side {
+        padding: 30px 20px;
+    }
+
+    .map-box {
+        min-height: 300px;
+        border-left: none;
+        border-top: 1px solid #333;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 40px 20px;
+    }
+
+    /* WHATSAPP */
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .stat-item h3 {
+        font-size: 2rem;
+    }
+
+    .plan-price {
+        font-size: 2.2rem;
+    }
+}
+
+
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary: #FF0000; /* Bright Red */
+            --primary-dark: #8B0000; /* Deep Blood Red */
+            --accent: #ffffff;
+            --bg-dark: #050505;
+            --bg-card: #0f0f0f;
+            
+            --gradient-red: linear-gradient(135deg, #FF0000 0%, #800000 100%);
+            
+            --glass-bg: rgba(20, 0, 0, 0.9); 
+            --glass-border: rgba(255, 0, 0, 0.3);
+            
+            --shadow-red: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .den-title {
+            font-family: 'Black Ops One', cursive;
+            letter-spacing: 2px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .highlight { color: var(--primary); }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            color: #fff;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 0; height: 100%;
+            background: var(--primary);
+            z-index: -1;
+            transition: 0.3s;
+        }
+
+        .btn:hover::before { width: 100%; }
+        .btn:hover { box-shadow: var(--shadow-red); border-color: var(--primary); }
+
+        .btn-filled {
+            background: var(--primary);
+            color: #000;
+        }
+        
+        .btn-filled:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            background: linear-gradient(to bottom, #000 0%, transparent 100%);
+            transition: 0.4s;
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid var(--primary-dark);
+            padding: 10px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Black Ops One', cursive;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i { color: var(--primary); font-size: 1.5rem; }
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        .mobile-toggle { display: none; font-size: 1.8rem; color: var(--primary); cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: 
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+                url('https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=1456&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 60%, rgba(139, 0, 0, 0.4) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+            font-family: 'Black Ops One', cursive;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+            text-shadow: 0 0 30px var(--primary);
+            display: block;
+            font-size: 6.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #ddd;
+            text-shadow: 1px 1px 2px #000;
+            animation: slideUp 1s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .hindi-text {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        /* --- STATS BAR --- */
+        .stats-bar {
+            background: #0a0a0a;
+            border-top: 2px solid var(--primary-dark);
+            border-bottom: 2px solid var(--primary-dark);
+            padding: 30px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* --- FEATURES --- */
+        .features {
+            padding: 80px 0;
+            background: #000;
+            background-image: radial-gradient(circle at 50% 50%, #1a0000 0%, #000 70%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid #333;
+            padding: 35px 25px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
+            background: rgba(30, 0, 0, 0.6);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: 0.4s;
+        }
+        
+        .feature-card:hover::before { transform: scaleX(1); }
+
+        .icon-box {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--primary-dark);
+        }
+
+        .feature-card h3 { margin-bottom: 10px; color: #fff; font-size: 1.3rem; }
+        .feature-card p { color: #aaa; font-size: 0.9rem; }
+
+        /* --- PRICING SECTION --- */
+        .pricing-section {
+            padding: 80px 0;
+            background: #050505;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center; /* Align for different heights */
+        }
+
+        .plan-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 40px 30px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .plan-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            background: #1a0505;
+            z-index: 2;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 5px 20px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .plan-price span { font-size: 1rem; color: #666; font-weight: 400; }
+
+        .plan-features {
+            margin-bottom: 30px;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .plan-features li {
+            margin-bottom: 10px;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .plan-features li i { color: var(--primary); margin-right: 10px; width: 20px; text-align: center; }
+
+        /* --- GALLERY GRID --- */
+        .gallery-section {
+            padding: 80px 0;
+            background: #000;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border: 1px solid #222;
+            transition: 0.3s;
+            filter: grayscale(40%); 
+        }
+
+        .gallery-item:hover {
+            filter: grayscale(0%);
+            border-color: var(--primary);
+            z-index: 2;
+            transform: scale(1.02);
+        }
+
+        .g1 { background-image: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1470&auto=format&fit=crop'); }
+        .g2 { background-image: url('https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=1470&auto=format&fit=crop'); }
+        .g3 { background-image: url('https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop'); }
+
+        /* --- LOCATION & CONTACT --- */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #000 0%, #0f0000 100%);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 4fr 5fr;
+            gap: 0; /* Removing gap to make them stick together */
+            background: #0a0a0a;
+            border: 1px solid #333;
+        }
+
+        .info-side {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-icon {
+            width: 45px; height: 45px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .map-box {
+            position: relative;
+            min-height: 450px;
+            border-left: 1px solid #333;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(100%) invert(100%) contrast(1.2); 
+            transition: 0.5s;
+        }
+
+        .map-container:hover {
+            filter: grayscale(0%);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #050505;
+            padding: 60px 0 30px;
+            border-top: 1px solid #222;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            width: 40px; height: 40px;
+            border: 1px solid #444;
+            color: #fff;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* --- FLOATING WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-content h1 span { font-size: 4.5rem; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .map-box { min-height: 350px; border-left: none; border-top: 1px solid #333; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .pricing-card.popular { transform: scale(1); }
+        }
+
+        /* ===== LEAD FORM MODAL ===== */
+.lead-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.lead-box {
+    background: #0f0f0f;
+    border: 2px solid red;
+    padding: 30px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    position: relative;
+}
+
+.lead-box h2 {
+    font-family: 'Oswald';
+    color: red;
+    margin-bottom: 10px;
+}
+
+.lead-box p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.lead-box input,
+.lead-box select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+.lead-box button {
+    width: 100%;
+    padding: 14px;
+    background: red;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <i class="fa-solid fa-dumbbell"></i>
+                <div>AJAY'S <span>IRON DEN</span></div>
+            </div>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#features">FACILITIES</a></li>
+                <li><a href="#pricing">PLANS</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#contact" style="color: var(--primary);">JOIN NOW</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content container">
+            <span class="hindi-text">असली मेहनत. असली परिणाम.</span>
+            <h1>IRON <span>DEN</span></h1>
+            <p>Welcome to the Red Zone. Premium equipment, hardcore atmosphere, and expert training under Ajay Sir. Located in Bhavna Nagar, Indore.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#contact" class="btn btn-filled">START TRAINING</a>
+                <a href="https://maps.app.goo.gl/Xj6SZXuCG7r2a5LfA" target="_blank" class="btn">LOCATE GYM</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>ACTIVE MEMBERS</p>
+            </div>
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>YEARS EXPERIENCE</p>
+            </div>
+            <div class="stat-item">
+                <h3>4.8</h3>
+                <p>GOOGLE RATING</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>HARDCORE</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">FORGED IN <span class="highlight">IRON</span></h2>
+            <p class="section-subtitle">Why We Are The Best In Indore</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-fire"></i></div>
+                    <h3>RED THEME AMBIENCE</h3>
+                    <p>Train in our signature aggressive red lighting environment designed to boost focus and intensity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-weight-hanging"></i></div>
+                    <h3>HEAVY DUTY EQUIPMENT</h3>
+                    <p>Professional grade machines and free weights. Deadlift platforms, squat racks, and heavy dumbbells.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-user-ninja"></i></div>
+                    <h3>EXPERT TRAINING</h3>
+                    <p>Guidance from Ajay Sir and certified trainers who understand biomechanics and muscle hypertrophy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-music"></i></div>
+                    <h3>SOUND SYSTEM</h3>
+                    <p>High-energy music system to keep your adrenaline pumping throughout your workout session.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Plans -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">MEMBERSHIP <span class="highlight">PLANS</span></h2>
+            <p class="section-subtitle">Invest In Your Body</p>
+
+            <div class="pricing-grid">
+                <!-- Plan 1 -->
+                <div class="plan-card">
+                    <h3 class="plan-name">MONTHLY</h3>
+                    <div class="plan-price">₹1500 <span>/ mo</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> Gym Access</li>
+                        <li><i class="fa-solid fa-check"></i> General Training</li>
+                        <li><i class="fa-solid fa-check"></i> Locker Facility</li>
+                        <li><i class="fa-solid fa-check"></i> Cardio Zone</li>
+                    </ul>
+                    <a href="#contact" class="btn">CHOOSE PLAN</a>
+                </div>
+
+                <!-- Plan 2 (Popular) -->
+                <div class="plan-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3 class="plan-name">QUARTERLY</h3>
+                    <div class="plan-price">₹4000 <span>/ 3 mo</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> All Gym Access</li>
+                        <li><i class="fa-solid fa-check"></i> Diet Consultation</li>
+                        <li><i class="fa-solid fa-check"></i> Steam Bath Access</li>
+                        <li><i class="fa-solid fa-check"></i> BMI Checkup</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-filled">CHOOSE PLAN</a>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="plan-card">
+                    <h3 class="plan-name">YEARLY</h3>
+                    <div class="plan-price">₹12000 <span>/ yr</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> VIP Access</li>
+                        <li><i class="fa-solid fa-check"></i> Advanced Training</li>
+                        <li><i class="fa-solid fa-check"></i> Personal Diet Plan</li>
+                        <li><i class="fa-solid fa-check"></i> Free Merchandise</li>
+                    </ul>
+                    <a href="#contact" class="btn">CHOOSE PLAN</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">THE <span class="highlight">DEN</span></h2>
+            <p class="section-subtitle">A Look Inside</p>
+            <div class="gallery-grid">
+                <div class="gallery-item g1"></div>
+                <div class="gallery-item g2"></div>
+                <div class="gallery-item g3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">LOCATION & <span class="highlight">CONTACT</span></h2>
+            <div class="contact-wrapper">
+                
+                <!-- Info Side -->
+                <div class="info-side">
+                    <h3 style="font-family:'Oswald'; color:#fff; font-size:2rem; margin-bottom:30px;">VISIT US TODAY</h3>
+                    
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4 style="color:#fff;">ADDRESS</h4>
+                            <p style="color:#ccc;">1, Khadwa Road, Khandwa Naka, Bhavna Nagar, Indore, Madhya Pradesh 452001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4 style="color:#fff;">CALL US</h4>
+                            <p style="color:#ccc;">+91 98260 XXXXX</p>
+                            <p style="color:#666; font-size:0.9rem;">(Mon-Sat: 6AM - 10PM)</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top:20px;">
+                        <a href="https://maps.app.goo.gl/Xj6SZXuCG7r2a5LfA" target="_blank" class="btn btn-filled">
+                            <i class="fa-solid fa-diamond-turn-right" style="margin-right:8px;"></i> GET DIRECTIONS
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map Side -->
+                <div class="map-box">
+                    <iframe class="map-container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.6860049445175!2d75.88014441496196!3d22.67382918513075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd3b8a8e1e1f%3A0x6a6a6a6a6a6a6a6a!2sAJAY&#39;S+IRON+DEN+THE+GYM!5e0!3m2!1sen!2sin!4v1622520000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+                AJAY'S <span>IRON DEN</span>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+            <p style="color: #666; font-size: 0.9rem;">&copy; 2024 AJAY'S IRON DEN THE GYM. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/9198260XXXXX" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+  <script>
+    // Navbar Scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar')
+            .classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+
+function openLeadForm() {
+    document.getElementById('leadModal').style.display = 'flex';
+}
+
+function closeLeadForm() {
+    document.getElementById('leadModal').style.display = 'none';
+}
+
+function sendWhatsApp() {
+    let name = document.getElementById('name').value;
+    let phone = document.getElementById('phone').value;
+    let plan = document.getElementById('plan').value;
+
+    if(name === "" || phone === "" || plan === "") {
+        alert("Please fill all details");
+        return;
+    }
+
+    let message = `🔥 *New Gym Enquiry* 🔥%0A
+👤 Name: ${name}%0A
+📞 Phone: ${phone}%0A
+💪 Plan Interested: ${plan}`;
+
+    let whatsappNumber = "9198260XXXXX"; // ← your WhatsApp number
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+}
+
+
+</script>
+
+<!-- Sticky Mobile CTA -->
+<div class="mobile-cta">
+    <button onclick="openLeadForm()">
+        <i class="fa-solid fa-dumbbell"></i> JOIN NOW
+    </button>
+</div>
+<!-- WhatsApp Lead Form Modal -->
+<div class="lead-modal" id="leadModal">
+    <div class="lead-box">
+        <h2>JOIN IRON DEN 💪</h2>
+        <p>Fill details & we’ll contact you on WhatsApp</p>
+
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="tel" id="phone" placeholder="Mobile Number">
+        <select id="plan">
+            <option value="">Select Plan</option>
+            <option>Monthly</option>
+            <option>Quarterly</option>
+            <option>Yearly</option>
+            <option>Personal Training</option>
+        </select>
+
+        <button onclick="sendWhatsApp()">Send on WhatsApp</button>
+        <span class="close-btn" onclick="closeLeadForm()">✖</span>
+    </div>
+</div>
+
+</body>
+</html>
+    

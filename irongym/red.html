@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAY'S IRON DEN | Premium Gym in Indore</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary: #FFD700; /* Gold */
+            --primary-hover: #ffea70;
+            --text-light: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #8B0000 0%, #B22222 40%, #FF4500 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            
+            /* Radius Variables */
+            --radius-lg: 25px;
+            --radius-md: 15px;
+            --radius-btn: 50px;
+            
+            --section-spacing: 100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px; /* Reduced side padding slightly for mobile */
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem); /* Responsive font scaling */
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .highlight { color: var(--primary); }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            border-radius: var(--radius-btn);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), #FFA500);
+            color: #8B0000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            color: #000;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #8B0000;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: 0.4s;
+        }
+
+        nav.scrolled {
+            background: rgba(139, 0, 0, 0.9);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 1001; /* Above mobile menu */
+        }
+
+        .logo span { color: var(--primary); margin-left: 8px; }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            padding: 5px 0;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #fff;
+            cursor: pointer;
+            line-height: 1;
+            z-index: 1001;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            /* Use dvh for mobile address bar support */
+            min-height: 100dvh; 
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: 80px;
+            padding-bottom: 80px; /* Space for bottom graphics */
+        }
+
+        /* Mobile Fix for Background Attachment */
+        @media (hover: none) {
+            body, .hero {
+                background-attachment: scroll;
+            }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #8B0000, transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 {
+            /* CLAMP: Min 2.8rem, Max 5.5rem based on screen width */
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            animation: scaleIn 1s ease;
+        }
+
+        .hindi-sub {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 24px;
+            font-weight: 300;
+            animation: fadeInRight 1.2s ease;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1.4s ease;
+            padding: 0 10px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap; /* Wraps on very small screens */
+            animation: fadeInUp 1.6s ease;
+        }
+
+        /* --- STATS BAR --- */
+        .stats-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 0;
+            position: relative;
+            z-index: 10;
+            margin: -50px auto 20px auto; /* Overlap hero slightly */
+            border-radius: var(--radius-lg);
+            max-width: 1100px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .stat-item h3 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-item p {
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* --- FEATURES --- */
+        .features {
+            padding: var(--section-spacing) 0;
+            position: relative;
+        }
+
+        .features-grid {
+            display: grid;
+            /* Changed to 280px to fit smaller mobile screens without horizontal scroll */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            margin-top: auto;
+        }
+
+        /* --- REVIEWS --- */
+        .reviews {
+            padding: var(--section-spacing) 0;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .review-card:hover {
+            transform: scale(1.02);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stars { color: var(--primary); letter-spacing: 2px; font-size: 0.9rem; }
+        
+        .reviewer-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .review-text {
+            color: #eee;
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- LOCATION --- */
+        .location-section {
+            padding: 40px 20px;
+        }
+
+        .location-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-side, .info-side {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .map-side {
+            background: #222;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            filter: contrast(1.1);
+        }
+
+        .info-side {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .info-icon {
+            flex-shrink: 0;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .info-content p { color: #eee; margin: 0; font-size: 0.95rem; }
+
+        /* --- CONTACT FORM --- */
+        .contact {
+            padding: var(--section-spacing) 0;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group { margin-bottom: 25px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: 0.3s;
+            border-radius: var(--radius-md);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        textarea.form-control { resize: vertical; min-height: 120px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 50px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-logo span { color: var(--primary); }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.3s;
+            color: #fff;
+        }
+
+        .social-icon:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* --- RESPONSIVE QUERIES --- */
+        
+        /* Tablet & Small Desktop */
+        @media (max-width: 992px) {
+            .stats-bar {
+                margin: 20px 20px; 
+                padding: 30px 20px;
+            }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .location-container { flex-direction: column; }
+            .map-side, .info-side { width: 100%; }
+        }
+
+        /* Mobile Devices */
+        @media (max-width: 768px) {
+            :root { --section-spacing: 60px; } /* Reduce spacing */
+            
+            .mobile-toggle { display: block; }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px; /* Navbar height */
+                left: -100%;
+                width: 100%;
+                background: rgba(139, 0, 0, 0.98); /* Solid bg for readability */
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                transition: 0.4s;
+                border-bottom: 1px solid var(--primary);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                backdrop-filter: blur(15px);
+            }
+            .nav-links.active { left: 0; }
+            
+            .hero-btns { flex-direction: column; width: 100%; padding: 0 20px; }
+            .btn { width: 100%; }
+            
+            .stats-bar { margin: 20px 0; border-radius: 0; border-left: 0; border-right: 0; }
+            
+            .form-container { padding: 30px 20px; }
+            .info-side { padding: 40px 25px; }
+            .info-item { gap: 15px; }
+            
+            .section-title { font-size: 2.2rem; }
+            .section-subtitle { margin-bottom: 2.5rem; }
+        }
+        
+        /* Small Phones */
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 1.8rem; }
+            .feature-card, .review-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">AJAY'S <span>IRON DEN</span></div>
+            <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#features" onclick="toggleMenu()">Features</a></li>
+                <li><a href="#reviews" onclick="toggleMenu()">Testimonials</a></li>
+                <li><a href="#location" onclick="toggleMenu()">Location</a></li>
+                <li><a href="#contact" onclick="toggleMenu()" style="color: var(--primary);">Join Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-tag">Best Gym in Indore</div>
+            <h1>BUILD YOUR<br><span class="highlight">LEGACY</span> HERE</h1>
+            <p class="hindi-sub">अजय'स आयरन डेन द जिम</p>
+            <p>Experience elite training with professional equipment, expert guidance from Ajay Sir, and an atmosphere that demands progress.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Start Training</a>
+                <a href="#features" class="btn btn-outline">Explore Facilities</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="stats-bar glass-card">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Active Members</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.8</h3>
+                    <p>Rating (27+ Reviews)</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="features fade-in-section" id="features">
+        <div class="container">
+            <h2 class="section-title">WHY CHOOSE <span class="highlight">IRON DEN</span></h2>
+            <p class="section-subtitle">Forged in Iron & Sweat</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box">🏋️</div>
+                    <h3>Pro-Grade Equipment</h3>
+                    <p>State-of-the-art machinery and Olympic standard free weights. Designed for biomechanics and safety.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon-box">👨‍🏫</div>
+                    <h3>Elite Coaching</h3>
+                    <p>Train under Ajay Sir, an elite lifter with deep anatomical knowledge. We teach you how to lift.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">🎯</div>
+                    <h3>Custom Programming</h3>
+                    <p>Get personalized workout regimens and nutrition advice tailored to your specific physiology.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">⚡</div>
+                    <h3>Functional Training</h3>
+                    <p>Dedicated zones for HIIT, cross-training, and agility. Build endurance for the real world.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">🌬️</div>
+                    <h3>Spacious Environment</h3>
+                    <p>A massive floor plan ensures you never wait for a machine. Proper ventilation and hygiene.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box">🤝</div>
+                    <h3>Iron Community</h3>
+                    <p>Join a tribe of motivated individuals. The atmosphere here pushes you to break your limits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews fade-in-section" id="reviews">
+        <div class="container">
+            <h2 class="section-title">MEMBER <span class="highlight">STORIES</span></h2>
+            <p class="section-subtitle">Real People. Real Results.</p>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-name">Mayur Shivhare</div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <p class="review-text">"A very good gym with all the required machines and enough space. Trainer and owner Ajay sir is highly knowledgeable and himself an elite lifter."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-name">Sujal Saini</div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <p class="review-text">"Best gym in the area. Best environment for workout. The equipment is top-notch and the atmosphere is incredibly motivating!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-name">Prof. Dheeraj Mandloi</div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <p class="review-text">"Very good gym for cardio, functional training and weight training workout. Everything you need under one roof with professional guidance."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-section" id="location">
+        <div class="location-container">
+            <div class="info-side">
+                <h2 style="font-size: 2rem; margin-bottom: 25px;">FIND US</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h4>Location</h4>
+                        <p>1, Khadwa Road, Khandwa Naka<br>Bhavna Nagar, Indore, MP 452001</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">⏰</div>
+                    <div class="info-content">
+                        <h4>Opening Hours</h4>
+                        <p><span class="highlight">Daily: 6:00 AM - 10:00 PM</span><br>No excuses. We are open when you need us.</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h4>Contact</h4>
+                        <p>Visit the desk for membership inquiries.<br>Free trial session available.</p>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir//Indore,+Madhya+Pradesh+452001" target="_blank" class="btn btn-outline" style="text-align:center;">Get Directions</a>
+            </div>
+            
+            <div class="map-side">
+                <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.6402450372336!2d75.8770!3d22.7042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDQyJzE1LjEiTiA3NcKwNTInMzcuMiJF!5e0!3m2!1sen!2sin!4v1631234567890!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="form-container fade-in-section">
+                <h2 class="section-title">JOIN THE <span class="highlight">DEN</span></h2>
+                <p class="section-subtitle" style="margin-bottom: 40px;">Your Transformation Starts Now</p>
+                
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="ENTER YOUR NAME" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="ENTER YOUR NUMBER" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Goal</label>
+                        <select class="form-control">
+                            <option>Muscle Gain</option>
+                            <option>Fat Loss</option>
+                            <option>General Fitness</option>
+                            <option>Competition Prep</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message (Optional)</label>
+                        <textarea class="form-control" placeholder="ANY SPECIFIC QUESTIONS?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">AJAY'S <span>IRON DEN</span></div>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/irondenthegym/" target="_blank" class="social-icon" title="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="social-icon" title="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="social-icon" title="Maps">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </a>
+            </div>
+
+            <p class="copyright">© 2024 AJAY'S IRON DEN THE GYM. All Rights Reserved.</p>
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 10px;">Forged in Indore.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Form Handling
+        function handleSubmit(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Processing...';
+            btn.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                alert('Request Received! We will call you shortly to schedule your visit.');
+                event.target.reset();
+                btn.textContent = originalText;
+                btn.style.opacity = '1';
+            }, 1500);
+        }
+
+        // Intersection Observer for Fade In Animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

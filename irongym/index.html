@@ -1,10 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Shailu's Fitness Club | Transform Your Body</title>
+  <title>AJAY'S IRON DEN THE GYM | Transform Your Body</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -15,13 +14,15 @@
     }
 
     :root {
-      --fire: #ff3b00;
-      --fire-dark: #cc2f00;
+      --fire: #ffd700;
+      /* primary yellow */
+      --fire-dark: #c7a600;
       --dark: #0a0a0a;
       --dark-light: #1a1a1a;
       --gray: #888;
       --white: #ffffff;
-      --gold: #ffd700;
+      --gold: #ffea00;
+      /* light bright yellow */
     }
 
     body {
@@ -35,18 +36,27 @@
     .bg-gradient {
       position: fixed;
       inset: 0;
-      background: 
-        radial-gradient(ellipse at 10% 20%, rgba(255, 59, 0, 0.15) 0%, transparent 40%),
-        radial-gradient(ellipse at 90% 80%, rgba(255, 119, 0, 0.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(255, 59, 0, 0.05) 0%, transparent 60%);
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(255, 215, 0, 0.18) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 80%, rgba(255, 234, 0, 0.14) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(255, 215, 0, 0.06) 0%, transparent 60%);
       animation: pulse 10s ease-in-out infinite;
       pointer-events: none;
       z-index: 0;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.05); }
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+      }
     }
 
     /* Particle Effect */
@@ -61,16 +71,31 @@
       position: absolute;
       width: 3px;
       height: 3px;
-      background: rgba(255, 59, 0, 0.3);
+      background: rgba(255, 215, 0, 0.3);
       border-radius: 50%;
       animation: float-particle 15s infinite;
     }
 
     @keyframes float-particle {
-      0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+      }
     }
 
     .content-wrapper {
@@ -94,7 +119,7 @@
     header.scrolled {
       background: rgba(10, 10, 10, 0.95);
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-      border-bottom-color: rgba(255, 59, 0, 0.3);
+      border-bottom-color: rgba(255, 215, 0, 0.4);
     }
 
     nav {
@@ -106,21 +131,29 @@
       align-items: center;
     }
 
-    .logo {
+    .logo a {
       font-size: 1.5rem;
       font-weight: 900;
       letter-spacing: -1px;
-      background: linear-gradient(135deg, var(--fire), #ff7700, var(--gold));
+      background: linear-gradient(135deg, var(--fire), var(--gold), #fffde7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       position: relative;
       animation: glow 3s ease-in-out infinite;
+      text-decoration: none;
     }
 
     @keyframes glow {
-      0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 59, 0, 0.5)); }
-      50% { filter: drop-shadow(0 0 15px rgba(255, 59, 0, 0.8)); }
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 15px rgba(255, 234, 0, 0.9));
+      }
     }
 
     .nav-links {
@@ -137,7 +170,6 @@
       font-size: 0.95rem;
       transition: all 0.3s ease;
       position: relative;
-      /* padding: -0.5rem 0 !important; */
     }
 
     .nav-links a::before {
@@ -161,7 +193,7 @@
     }
 
     .cta-btn {
-      background: linear-gradient(135deg, var(--fire), #ff7700);
+      background: linear-gradient(135deg, var(--fire), var(--gold));
       color: var(--white);
       padding: 0.75rem 1.8rem;
       border-radius: 50px;
@@ -169,7 +201,7 @@
       font-weight: 700;
       font-size: 0.9rem;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 25px rgba(255, 59, 0, 0.4);
+      box-shadow: 0 5px 25px rgba(255, 215, 0, 0.4);
       position: relative;
       overflow: hidden;
     }
@@ -178,19 +210,18 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #ff7700, var(--gold));
+      background: linear-gradient(135deg, var(--fire-dark), var(--gold));
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
     .cta-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 35px rgba(255, 59, 0, 0.6);
-          color: var(--white);
+      box-shadow: 0 10px 35px rgba(255, 234, 0, 0.6);
+      color: var(--white);
     }
 
     .cta-btn:hover::before {
-      
       opacity: 1;
     }
 
@@ -217,14 +248,23 @@
       left: 50%;
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, rgba(255, 59, 0, 0.2) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
       transform: translate(-50%, -50%);
       animation: pulse-circle 4s ease-in-out infinite;
     }
 
     @keyframes pulse-circle {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+
+      0%,
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+      }
     }
 
     .hero-grid {
@@ -247,12 +287,19 @@
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero-content h1 span {
-      background: linear-gradient(135deg, var(--fire), #ff7700, var(--gold));
+      background: linear-gradient(135deg, var(--fire), var(--gold), #fffde7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -262,8 +309,15 @@
     }
 
     @keyframes shimmer {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
     }
 
     .hero-subtitle {
@@ -326,28 +380,30 @@
     }
 
     .btn-primary {
-      /* background: linear-gradient(135deg, var(--fire), #35eb0c); */
-      background-color: green;
-      color: var(--white);
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      color: var(--dark);
       padding: 1.2rem 3rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.05rem;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 10px 35px rgba(255, 59, 0, 0.4);
+      box-shadow: 0 10px 35px rgba(255, 215, 0, 0.4);
       display: inline-block;
       position: relative;
       overflow: hidden;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary::before {
       content: '';
       position: absolute;
       inset: 0;
-      /* background: linear-gradient(135deg, #ff7700, var(--gold)); */
+      background: linear-gradient(135deg, var(--fire-dark), var(--gold));
       transform: translateX(-100%);
       transition: transform 0.4s ease;
+      opacity: 0.9;
     }
 
     .btn-primary:hover::before {
@@ -361,7 +417,8 @@
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      /* box-shadow: 0 15px 45px rgba(8, 218, 47, 0.6); */
+      box-shadow: 0 15px 45px rgba(255, 234, 0, 0.6);
+      color: var(--dark);
     }
 
     .btn-secondary {
@@ -379,10 +436,10 @@
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 59, 0, 0.1);
+      background: rgba(255, 215, 0, 0.1);
       border-color: var(--fire);
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.3);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
     }
 
     /* 3D Hero Visual */
@@ -406,7 +463,7 @@
     .visual-card:hover {
       transform: translateZ(30px) rotateY(5deg);
       border-color: var(--fire);
-      box-shadow: 0 30px 80px rgba(255, 59, 0, 0.4);
+      box-shadow: 0 30px 80px rgba(255, 215, 0, 0.4);
     }
 
     .visual-card:nth-child(1) {
@@ -431,8 +488,15 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0) rotateX(0); }
-      50% { transform: translateY(-25px) rotateX(2deg); }
+
+      0%,
+      100% {
+        transform: translateY(0) rotateX(0);
+      }
+
+      50% {
+        transform: translateY(-25px) rotateX(2deg);
+      }
     }
 
     .card-title {
@@ -456,7 +520,7 @@
     .card-icon {
       font-size: 3rem;
       margin-bottom: 1rem;
-      filter: drop-shadow(0 5px 15px rgba(255, 59, 0, 0.5));
+      filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.5));
     }
 
     /* Section Styling */
@@ -477,7 +541,7 @@
 
     .section-label {
       display: inline-block;
-      background: linear-gradient(135deg, rgba(255, 59, 0, 0.15), rgba(255, 119, 0, 0.15));
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 234, 0, 0.15));
       color: var(--fire);
       padding: 0.6rem 1.5rem;
       border-radius: 50px;
@@ -486,7 +550,7 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(255, 59, 0, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.4);
       backdrop-filter: blur(10px);
     }
 
@@ -528,7 +592,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255, 59, 0, 0.1), rgba(255, 119, 0, 0.1));
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 234, 0, 0.1));
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -541,20 +605,20 @@
       background: rgba(255, 255, 255, 0.08);
       border-color: var(--fire);
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(255, 59, 0, 0.3);
+      box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
     }
 
     .facility-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--fire), #ff7700);
+      background: linear-gradient(135deg, var(--fire), var(--gold));
       border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2rem;
       margin-bottom: 1.8rem;
-      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.4);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
       transition: all 0.4s ease;
       position: relative;
       z-index: 1;
@@ -562,7 +626,7 @@
 
     .facility-card:hover .facility-icon {
       transform: rotateY(360deg) scale(1.1);
-      box-shadow: 0 15px 40px rgba(255, 59, 0, 0.6);
+      box-shadow: 0 15px 40px rgba(255, 234, 0, 0.6);
     }
 
     .facility-card h3 {
@@ -602,7 +666,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255, 59, 0, 0.05), rgba(255, 119, 0, 0.05));
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 234, 0, 0.05));
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -610,7 +674,7 @@
     .plan-card:hover {
       transform: translateY(-10px);
       border-color: var(--fire);
-      box-shadow: 0 25px 70px rgba(255, 59, 0, 0.3);
+      box-shadow: 0 25px 70px rgba(255, 215, 0, 0.3);
     }
 
     .plan-card:hover::before {
@@ -619,9 +683,9 @@
 
     .plan-card.featured {
       border-color: var(--fire);
-      background: rgba(255, 59, 0, 0.08);
+      background: rgba(255, 215, 0, 0.08);
       transform: scale(1.05);
-      box-shadow: 0 20px 60px rgba(255, 59, 0, 0.4);
+      box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
     }
 
     .plan-card.featured:hover {
@@ -633,15 +697,15 @@
       top: 15px;
       left: 50%;
       transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--fire), #ff7700);
-      color: var(--white);
+      background: linear-gradient(135deg, var(--fire-dark), var(--fire));
+      color: var(--dark);
       padding: 0.5rem 1.5rem;
       border-radius: 50px;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      box-shadow: 0 5px 20px rgba(255, 59, 0, 0.5);
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
     }
 
     .plan-card h3 {
@@ -713,7 +777,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255, 59, 0, 0.1), transparent);
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), transparent);
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -725,29 +789,30 @@
     .trainer-card:hover {
       transform: translateY(-10px);
       border-color: var(--fire);
-      box-shadow: 0 25px 70px rgba(255, 59, 0, 0.3);
+      box-shadow: 0 25px 70px rgba(255, 215, 0, 0.3);
     }
 
     .trainer-avatar {
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--fire), #ff7700, var(--gold));
+      background: linear-gradient(135deg, var(--fire-dark), var(--fire), var(--gold));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 3.5rem;
       font-weight: 900;
       margin: 0 auto 2rem;
-      box-shadow: 0 15px 40px rgba(255, 59, 0, 0.5);
+      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
       transition: all 0.4s ease;
       position: relative;
       z-index: 1;
+      color: var(--dark);
     }
 
     .trainer-card:hover .trainer-avatar {
       transform: scale(1.1) rotateZ(5deg);
-      box-shadow: 0 20px 50px rgba(255, 59, 0, 0.7);
+      box-shadow: 0 20px 50px rgba(255, 234, 0, 0.7);
     }
 
     .trainer-card h3 {
@@ -798,7 +863,7 @@
       top: 20px;
       left: 20px;
       font-size: 8rem;
-      color: rgba(255, 59, 0, 0.1);
+      color: rgba(255, 215, 0, 0.1);
       font-family: Georgia, serif;
       line-height: 1;
     }
@@ -806,7 +871,7 @@
     .review-card:hover {
       transform: translateY(-5px);
       border-color: var(--fire);
-      box-shadow: 0 20px 50px rgba(255, 59, 0, 0.2);
+      box-shadow: 0 20px 50px rgba(255, 215, 0, 0.2);
     }
 
     .review-stars {
@@ -861,7 +926,7 @@
     .info-item:hover {
       border-color: var(--fire);
       transform: translateX(5px);
-      box-shadow: 0 10px 30px rgba(255, 59, 0, 0.2);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
     }
 
     .info-item h4 {
@@ -1052,6 +1117,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Scroll Progress -->
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -1059,14 +1125,15 @@
   <!-- Animated Background -->
   <div class="bg-gradient"></div>
   <div class="particles" id="particles"></div>
-  
+
   <div class="content-wrapper">
     <!-- Header -->
     <header id="header">
       <nav>
-        <div class="logo"><a href="#home">SHAILU'S </a></div>
+        <div class="logo"><a href="#home">AJAY'S IRON DEN</a></div>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
+          <li><a href="photo.html">Photos</a></li>
           <li><a href="#facilities">Facilities</a></li>
           <li><a href="#trainers">Trainers</a></li>
           <li><a href="#membership">Membership</a></li>
@@ -1082,30 +1149,31 @@
       <div class="hero-grid">
         <div class="hero-content">
           <h1>
-            Transform Your
-            <span>Body & Mind</span>
+            Iron Strength,
+            <span>Elite Training.</span>
           </h1>
           <p class="hero-subtitle">
-            Experience premium fitness in the heart of Indore. Modern equipment, expert trainers, and a community that pushes you to achieve greatness every single day.
+            AJAY'S IRON DEN THE GYM – a focused strength & conditioning arena in Bhavna Nagar, Khandwa Road, Indore.
+            Modern machines, serious lifting atmosphere and a trainer who lives the lifestyle.
           </p>
-          
+
           <div class="hero-stats">
             <div class="stat">
-              <span class="stat-number">500+</span>
-              <span class="stat-label">Members</span>
-            </div>
-            <div class="stat">
               <span class="stat-number">4.8★</span>
-              <span class="stat-label">Rating</span>
+              <span class="stat-label">Google Rating</span>
             </div>
             <div class="stat">
-              <span class="stat-number">3</span>
-              <span class="stat-label">Trainers</span>
+              <span class="stat-number">27+</span>
+              <span class="stat-label">Member Reviews</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">IRON</span>
+              <span class="stat-label">Strength Focus</span>
             </div>
           </div>
 
           <div class="hero-buttons">
-            <a href="#contact" class="btn-primary"><span>Start Free Trial</span></a>
+            <a href="#contact" class="btn-primary"><span>Start Your Trial</span></a>
             <a href="#facilities" class="btn-secondary">Explore Gym</a>
           </div>
         </div>
@@ -1114,17 +1182,20 @@
           <div class="visual-card">
             <div class="card-icon">⏰</div>
             <div class="card-title">Training Hours</div>
-            <div class="card-value">6AM-12PM</div>
+            <div class="card-value">6AM–12PM*</div>
+            <p style="font-size:0.8rem; margin-top:0.5rem; color:rgba(255,255,255,0.6);">
+              *Update timing as per gym schedule
+            </p>
           </div>
           <div class="visual-card">
             <div class="card-icon">🏋️</div>
-            <div class="card-title">Equipment</div>
-            <div class="card-value">Premium</div>
+            <div class="card-title">Workout Style</div>
+            <div class="card-value">IRON</div>
           </div>
           <div class="visual-card">
-            <div class="card-icon">🎯</div>
-            <div class="card-title">Success</div>
-            <div class="card-value">95%</div>
+            <div class="card-icon">⭐</div>
+            <div class="card-title">Rating</div>
+            <div class="card-value">4.8</div>
           </div>
         </div>
       </div>
@@ -1135,45 +1206,47 @@
       <div class="container">
         <div class="section-header">
           <span class="section-label">What We Offer</span>
-          <h2 class="section-title">World-Class Facilities</h2>
-          <p class="section-subtitle">Everything you need for a complete fitness transformation under one roof</p>
+          <h2 class="section-title">Serious Lifting Environment</h2>
+          <p class="section-subtitle">Everything you need for cardio, functional training and heavy weight training –
+            just like members mention in their reviews.</p>
         </div>
 
         <div class="facilities-grid">
           <div class="facility-card">
-            <div class="facility-icon">💪</div>
-            <h3>Modern Equipment</h3>
-            <p>State-of-the-art machines and free weights for strength, cardio, and functional training tailored to your goals</p>
-          </div>
-
-          <div class="facility-card">
-            <div class="facility-icon">❄️</div>
-            <h3>Air Conditioning</h3>
-            <p>Temperature-controlled environment keeping you comfortable and focused during intense workout sessions</p>
-          </div>
-
-          <div class="facility-card">
             <div class="facility-icon">🏋️</div>
-            <h3>Spacious Area</h3>
-            <p>Ample space for weight training, stretching, and floor exercises without any crowding or waiting</p>
+            <h3>Complete Machines Setup</h3>
+            <p>All the required gym machines and enough floor space for proper strength and hypertrophy training.</p>
           </div>
 
           <div class="facility-card">
-            <div class="facility-icon">🔒</div>
-            <h3>Secure Lockers</h3>
-            <p>Safe storage for your belongings with convenient changing area and shower facilities</p>
+            <div class="facility-icon">🔥</div>
+            <h3>Strength-Focused Floor</h3>
+            <p>A lifting-friendly environment designed for squats, deadlifts, presses and progressive overload.</p>
           </div>
 
           <div class="facility-card">
-            <div class="facility-icon">✨</div>
-            <h3>Clean Interiors</h3>
-            <p>Hygienic, well-maintained floors with regular professional cleaning and sanitization protocols</p>
+            <div class="facility-icon">💨</div>
+            <h3>Cardio & Functional</h3>
+            <p>Dedicated area for cardio and functional training, exactly what members love about this gym.</p>
           </div>
 
           <div class="facility-card">
             <div class="facility-icon">👨‍🏫</div>
-            <h3>Guided Sessions</h3>
-            <p>Expert support for warm-ups, form corrections, and personalized workout planning included</p>
+            <h3>Guided Technique</h3>
+            <p>Form correction, machine guidance and proper lifting cues from an elite lifter and experienced trainer.
+            </p>
+          </div>
+
+          <div class="facility-card">
+            <div class="facility-icon">✨</div>
+            <h3>Clean & Motivating</h3>
+            <p>Positive workout environment with neat interiors that keep you focused on your sets and goals.</p>
+          </div>
+
+          <div class="facility-card">
+            <div class="facility-icon">🎯</div>
+            <h3>Goal-Oriented Training</h3>
+            <p>Whether it’s fat loss, strength gain or overall fitness – programs are aligned with your real goals.</p>
           </div>
         </div>
       </div>
@@ -1184,30 +1257,34 @@
       <div class="container">
         <div class="section-header">
           <span class="section-label">Expert Team</span>
-          <h2 class="section-title">Meet Your Trainers</h2>
-          <p class="section-subtitle">Certified professionals dedicated to your transformation journey</p>
+          <h2 class="section-title">Meet Your Coach</h2>
+          <p class="section-subtitle">Training guidance from someone who actually lifts and understands real-world
+            strength training.</p>
         </div>
 
         <div class="trainers-grid">
           <div class="trainer-card">
-            <div class="trainer-avatar">S</div>
-            <h3>Shailu</h3>
-            <div class="trainer-role">Head Coach</div>
-            <p>Certified strength & conditioning specialist with 8+ years experience in fat loss and muscle building transformations</p>
-          </div>
-
-          <div class="trainer-card">
             <div class="trainer-avatar">A</div>
-            <h3>Akash</h3>
-            <div class="trainer-role">Personal Trainer</div>
-            <p>Expert in customized workout plans and nutrition guidance specifically designed for busy professionals</p>
+            <h3>Ajay</h3>
+            <div class="trainer-role">Owner & Head Coach</div>
+            <p>Highly knowledgeable trainer and owner of AJAY'S IRON DEN. Known as an elite lifter with a strong focus
+              on proper technique, progressive overload and serious results.</p>
           </div>
 
           <div class="trainer-card">
-            <div class="trainer-avatar">P</div>
-            <h3>Pooja</h3>
-            <div class="trainer-role">Fitness Coach</div>
-            <p>Specializes in functional training, mobility work, and beginner-friendly programs for all fitness levels</p>
+            <div class="trainer-avatar">C</div>
+            <h3>Coaching Staff</h3>
+            <div class="trainer-role">Support Trainers</div>
+            <p>Supporting trainers available on floor to guide with machines, warm-up, basic form correction and
+              beginner-friendly routines.</p>
+          </div>
+
+          <div class="trainer-card">
+            <div class="trainer-avatar">Y</div>
+            <h3>Your Journey</h3>
+            <div class="trainer-role">Member Focus</div>
+            <p>Here, the focus stays on your consistency, discipline and progress – not just selfies and crowd. A
+              serious but friendly workout vibe.</p>
           </div>
         </div>
       </div>
@@ -1219,7 +1296,7 @@
         <div class="section-header">
           <span class="section-label">Pricing</span>
           <h2 class="section-title">Choose Your Plan</h2>
-          <p class="section-subtitle">Flexible membership options designed for your fitness goals and budget</p>
+          <p class="section-subtitle">Sample membership structure – update prices as per actual gym fees.</p>
         </div>
 
         <div class="plans-grid">
@@ -1229,24 +1306,24 @@
             <ul class="plan-features">
               <li>Full gym access</li>
               <li>Basic induction session</li>
-              <li>Locker facility</li>
+              <li>Locker / storage space *</li>
               <li>Open gym hours</li>
-              <li>Equipment training</li>
+              <li>Equipment guidance</li>
             </ul>
             <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;"><span>Get Started</span></a>
           </div>
 
           <div class="plan-card featured">
-            <div class="plan-badge">Most Popular</div>
+            <div class="plan-badge">Most Picked</div>
             <h3>Quarterly</h3>
             <div class="plan-price">₹5000</div>
             <ul class="plan-features">
-              <li>Personalized workout plan</li>
-              <li>Progress tracking</li>
-              <li>Priority trainer support</li>
-              <li>Diet consultation</li>
+              <li>Goal-wise workout guidance</li>
+              <li>Progress check-ins</li>
+              <li>Trainer support priority</li>
+              <li>Basic diet suggestions</li>
               <li>All monthly features</li>
-              <li>Body composition analysis</li>
+              <li>Form & posture focus</li>
             </ul>
             <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;"><span>Join Now</span></a>
           </div>
@@ -1255,12 +1332,12 @@
             <h3>Yearly</h3>
             <div class="plan-price">₹15000</div>
             <ul class="plan-features">
-              <li>Best value package</li>
-              <li>Exclusive discounts</li>
-              <li>Free body assessment</li>
-              <li>Guest passes (2/month)</li>
+              <li>Best value for regulars</li>
+              <li>Exclusive long-term benefits</li>
+              <li>Priority assistance</li>
+              <li>Guest access (limited)</li>
               <li>All quarterly features</li>
-              <li>Priority class booking</li>
+              <li>Serious transformation focus</li>
             </ul>
             <a href="#contact" class="btn-primary" style="width: 100%; text-align: center;"><span>Save More</span></a>
           </div>
@@ -1274,31 +1351,35 @@
         <div class="section-header">
           <span class="section-label">Testimonials</span>
           <h2 class="section-title">What Members Say</h2>
-          <p class="section-subtitle">Real transformations and experiences from our fitness community</p>
+          <p class="section-subtitle">Straight from people training at AJAY'S IRON DEN THE GYM – based on real Google
+            reviews.</p>
         </div>
 
         <div class="reviews-grid">
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Trainers are experienced and the floor has a healthy environment and positive vibes. Best gym in the area!"</p>
-            <p class="review-author">— Google Review</p>
+            <p class="review-text">"A very good gym with all the required machines and enough space. Trainer and owner
+              Ajay sir is highly knowledgeable and himself an elite lifter."</p>
+            <p class="review-author">— Mayur Shivhare (Google Review)</p>
           </div>
 
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Friendly environment with the best trainers. They have great experience and suggest what's best for you personally."</p>
-            <p class="review-author">— Google Review</p>
+            <p class="review-text">"Best gym in the area. Best environment for workout – perfect for people who really
+              want to train."</p>
+            <p class="review-author">— Sujal Saini (Google Review)</p>
           </div>
 
           <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Excellent interior and top-notch gym equipment. The trainers are always there to help and motivate you."</p>
-            <p class="review-author">— Member Feedback</p>
+            <p class="review-text">"Very good gym for cardio, functional training and weight training workout."</p>
+            <p class="review-author">— Prof. Dheeraj Mandloi (Google Review)</p>
           </div>
 
           <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Clean, spacious, and well-maintained. The AC keeps everything comfortable even during intense workouts."</p>
+            <div class="review-stars">★★★★☆</div>
+            <p class="review-text">"Serious training environment. If you are disciplined and focused, this place will
+              give you great results."</p>
             <p class="review-author">— Member Feedback</p>
           </div>
         </div>
@@ -1310,52 +1391,55 @@
       <div class="container">
         <div class="section-header">
           <span class="section-label">Get In Touch</span>
-          <h2 class="section-title">Start Your Journey Today</h2>
-          <p class="section-subtitle">Visit us or reach out to learn more about memberships and free trials</p>
+          <h2 class="section-title">Visit the Iron Den</h2>
+          <p class="section-subtitle">Drop in at the gym for membership details, trial workout and more information.</p>
         </div>
 
         <div class="contact-grid">
           <div class="contact-info">
             <div class="info-item">
               <h4>📍 Location</h4>
-              <p>Infront of Alaska Tower, 06, Main Rani Baag<br>
-              Khandwa Road, Near New Digamber Public School<br>
-              Indore, Madhya Pradesh 452001</p>
-              <a href="https://www.google.com/maps?q=MVCJ%2BG8+Indore" target="_blank">Get Directions →</a>
-            </div>
-
-            <div class="info-item">
-              <h4>📞 Contact</h4>
-              <p>Phone: <a href="tel:+919669608665">096696 08665</a></p>
-              <p>WhatsApp: <a href="https://wa.me/919669608665" target="_blank">Chat with us</a></p>
-              <p>Email: <a href="mailto:info@shailufitness.com">info@shailufitness.com</a></p>
+              <p>1, KHADWA ROAD, Khandwa Naka, Bhavna Nagar<br>
+                Indore, Madhya Pradesh 452001</p>
+              <p>Plus Code: MVFJ+G3 Indore, Madhya Pradesh</p>
+              <a href="https://maps.app.goo.gl/Xj6SZXuCG7r2a5LfA" target="_blank">Get Directions on Google Maps →</a>
             </div>
 
             <div class="info-item">
               <h4>⏰ Timings</h4>
               <p>Monday - Sunday<br>
-              6:00 AM - 12:00 PM</p>
-              <p style="color: var(--fire); margin-top: 0.5rem; font-weight: 700;">Open 7 days a week!</p>
+                6:00 AM - 12:00 PM*</p>
+              <p style="color: var(--fire); margin-top: 0.5rem; font-weight: 700;">*Update timings as per actual gym
+                hours.</p>
             </div>
           </div>
 
           <div class="contact-info">
-            <div class="info-item" style="padding: 3rem; background: rgba(255, 59, 0, 0.05); border-color: var(--fire);">
-              <h3 style="margin-bottom: 1.5rem; font-size: 2rem; background: linear-gradient(135deg, var(--fire), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Ready to Transform?</h3>
-              <p style="margin-bottom: 2.5rem; line-height: 1.9; color: rgba(255, 255, 255, 0.8);">Join hundreds of members who have already transformed their lives at Shailu's Fitness Club. Get started with a free trial today!</p>
+            <div class="info-item"
+              style="padding: 3rem; background: rgba(255, 215, 0, 0.06); border-color: var(--fire);">
+              <h3
+                style="margin-bottom: 1.5rem; font-size: 2rem; background: linear-gradient(135deg, var(--fire), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                Ready to Lift Heavy?</h3>
+              <p style="margin-bottom: 2.5rem; line-height: 1.9; color: rgba(255, 255, 255, 0.8);">
+                Join AJAY'S IRON DEN THE GYM and start training in a serious, no-nonsense environment built for real
+                progress. Visit the gym for membership and offers.
+              </p>
               <div style="display: flex; flex-direction: column; gap: 1.2rem;">
-                <a href="https://wa.me/919669608665" target="_blank" class="btn-primary" style="width: 100%; text-align: center;"><span>💬 WhatsApp Us</span></a>
-                <a href="tel:+919669608665" class="btn-secondary" style="width: 100%; text-align: center;">📞 Call Now</a>
+                <a href="contact.html" class="btn-primary" style="width: 100%; text-align: center;"><span>📋 Fill
+                    Enquiry Form</span></a>
+                <a href="#home" class="btn-secondary" style="width: 100%; text-align: center;">⬆ Back to Top</a>
               </div>
             </div>
-              <div class="info-item">
-              <h4>📞 Contact</h4>
-              
-              <button class="btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;"><span><a href="contact.html"> contact</a></span></button>
-            </div>
 
+            <div class="info-item">
+              <h4>📞 Contact Details</h4>
+              <p>Gym phone number & WhatsApp link can be added here.</p>
+              <p style="font-size:0.85rem; color:rgba(255,255,255,0.6);">
+                (Jaise hi number mile, yahan add kar sakte ho – ya mujhe bhej dena, mai code update kar dunga.)
+              </p>
+            </div>
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -1364,9 +1448,10 @@
     <footer>
       <div class="footer-content">
         <div class="footer-brand">
-          <h3>SHAILU'S FITNESS CLUB</h3>
-          <p style="margin-bottom: 0.5rem;">शैलू'स फिटनेस क्लब</p>
-          <p>Transforming lives through fitness, dedication, and community. Your journey to a healthier, stronger you starts here in Indore.</p>
+          <h3>AJAY'S IRON DEN THE GYM</h3>
+          <p style="margin-bottom: 0.5rem;">अजय'स आयरन डेन द जिम</p>
+          <p>Serious strength training, proper machines and a no-nonsense workout vibe in Bhavna Nagar, Khandwa Naka,
+            Indore.</p>
         </div>
 
         <div class="footer-links">
@@ -1382,10 +1467,10 @@
         <div class="footer-links">
           <h4>Connect</h4>
           <ul>
-            <li><a href="https://wa.me/919669608665" target="_blank">WhatsApp</a></li>
+            <li><a href="#">WhatsApp</a></li>
             <li><a href="#">Instagram</a></li>
             <li><a href="#">Facebook</a></li>
-            <li><a href="tel:+919669608665">Call Us</a></li>
+            <li><a href="#">Call Us</a></li>
           </ul>
         </div>
 
@@ -1394,14 +1479,14 @@
           <ul>
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://www.google.com/maps?q=MVCJ%2BG8+Indore" target="_blank">Location</a></li>
+            <li><a href="https://maps.app.goo.gl/Xj6SZXuCG7r2a5LfA" target="_blank">Location</a></li>
             <li><a href="#">FAQ</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2024 Shailu's Fitness Club. All rights reserved. | Indore, Madhya Pradesh</p>
+        <p>© 2024 AJAY'S IRON DEN THE GYM. All rights reserved. | Indore, Madhya Pradesh</p>
       </div>
     </footer>
   </div>
@@ -1466,4 +1551,5 @@
     updateScrollProgress();
   </script>
 </body>
+
 </html>
