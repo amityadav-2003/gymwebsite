@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Oswald:wght@400;600;700&family=Black+Ops+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Grid Gallery</title>
+    <style>
+     .top-bar
+     {
+       
+        padding: 10px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+     }
+        :root {
+            --bg-color: #0a0a0a;
+            /* Deep Black */
+            --card-bg: #1a1a1a;
+            --accent-color: #ff0000;
+            /* Gym Red */
+            --text-color: #ffffff;
+            --overlay-color: rgba(0, 0, 0, 0.95);
+            --border-radius: 8px;
+            --spacing: 12px;
+            /* Thoda kam spacing Pinterest look ke liye */
+            --transition-speed: 0.3s;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 40px 15px 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            color: var(--text-color);
+            border-bottom: 4px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        header p {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        /* --- MASONRY GRID LAYOUT --- */
+        .gallery-container {
+            padding: var(--spacing);
+            max-width: 1400px;
+            margin: 0 auto;
+            column-count: 4;
+            column-gap: var(--spacing);
+        }
+
+        /* Pinterest Style Responsive Columns */
+        @media (max-width: 1100px) {
+            .gallery-container {
+                column-count: 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container {
+                column-count: 2;
+                /* Mobile aur Tablet par 2 columns (Pinterest style) */
+                padding: 8px;
+                column-gap: 8px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* --- GALLERY ITEMS --- */
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: var(--spacing);
+            position: relative;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background-color: var(--card-bg);
+            transition: all var(--transition-speed) ease;
+            border: 1px solid #333;
+            min-height: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                margin-bottom: 8px;
+            }
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: filter var(--transition-speed) ease;
+        }
+
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            filter: grayscale(0%);
+        }
+
+        /* Overlay on Hover */
+        .item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 50%, rgba(255, 0, 0, 0.6));
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .gallery-item:hover .item-overlay {
+            opacity: 1;
+        }
+
+        /* Mobile par overlay hamesha thoda visible rahe ya touch par aaye */
+        @media (max-width: 768px) {
+            .item-overlay {
+                font-size: 0.7rem;
+                padding: 10px;
+            }
+        }
+
+        .video-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 10;
+        }
+
+        /* --- MODAL POPUP --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--overlay-color);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 100%;
+            max-height: 90vh;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            justify-content: center;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-content img,
+        .modal-content video {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 4px;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
+            object-fit: contain;
+        }
+
+        /* REDESIGNED CLOSE BUTTON */
+        .close-btn {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 44px;
+            height: 44px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+            z-index: 1010;
+        }
+
+        @media (max-width: 600px) {
+            .close-btn {
+                top: -55px;
+                right: 0;
+            }
+        }
+
+        /* --- UTILITIES --- */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+<div class="top-bar">
+     <a href="new.html" class="logo">
+                <i class="fa-solid fa-dumbbell"></i>
+                <div>AJAY'S <span>IRON DEN</span></div>
+            </a>
+            </div>
+    <header>
+        <h1>Power Grid</h1>
+        <p>Fueling the grind. Visual inspiration for athletes.</p>
+    </header>
+
+    <main class="gallery-container" id="gallery"></main>
+
+    <!-- Modal Structure -->
+    <div class="modal" id="modal">
+        <div class="modal-content" id="modalContent">
+            <button class="close-btn" id="closeModal" aria-label="Close">&times;</button>
+            <!-- Dynamic content injected here -->
+        </div>
+    </div>
+
+    <script>
+        const galleryData = [
+                        { type: 'video', url: 'Bridal_Makeup_Studio_Video.mp4', title: 'Strict Form' }
+,
+            { type: 'image', url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800', title: 'Power Lifting' },
+            { type: 'video', url: 'https://v.ftcdn.net/02/10/71/34/700_F_210713437_m7r0yB3wLshn1XzD3N3D3mG7bO9v2XG5_ST.mp4', title: 'Rep Progress' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800', title: 'Iron Paradise' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1583454110551-21f2fa2adfcd?auto=format&fit=crop&q=80&w=800', title: 'Night Grind' },
+            { type: 'video', url: 'https://v.ftcdn.net/05/65/37/10/700_F_565371079_mN7j4tLpA5D8rD1hD2N3E5A8zF1G2H3I_ST.mp4', title: 'Speed Work' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=800', title: 'Bodyweight Focus' },
+            { type: 'video', url: 'Bridal_Makeup_Studio_Video.mp4', title: 'Strict Form' }
+            ,
+            { type: 'image', url: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800', title: 'Endurance' },
+            { type: 'video', url: 'https://v.ftcdn.net/05/73/45/63/700_F_573456382_wM7H4pLpA5D8rD1hD2N3E5A8zF1G2H3I_ST.mp4', title: 'Steady State' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1574673139641-87b18f02f620?auto=format&fit=crop&q=80&w=800', title: 'Recovery' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=800', title: 'Rack Detail' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1518481612222-68bbe828eba1?auto=format&fit=crop&q=80&w=800', title: 'Dedication' },
+            { type: 'video', url: 'Bridal_Makeup_Studio_Video.mp4', title: 'Strict Form' },
+            { type: 'video', url: 'Bridal_Makeup_Studio_Video.mp4', title: 'Strict Form' }
+            , { type: 'video', url: 'Bridal_Makeup_Studio_Video.mp4', title: 'Strict Form' }
+
+        ];
+
+        const galleryElement = document.getElementById('gallery');
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        function initGallery() {
+            galleryData.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+
+                let videoTag = '';
+                if (item.type === 'video') {
+                    videoTag = `
+                        <div class="video-indicator">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    `;
+                }
+
+                galleryItem.innerHTML = `
+                    ${item.type === 'image'
+                        ? `<img src="${item.url}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none'">`
+                        : `<video src="${item.url}" muted loop playsinline preload="metadata" onerror="this.parentElement.style.display='none'"></video>`
+                    }
+                    ${videoTag}
+                    <div class="item-overlay">
+                        <span>${item.title}</span>
+                    </div>
+                `;
+
+                if (item.type === 'video') {
+                    const video = galleryItem.querySelector('video');
+                    galleryItem.addEventListener('mouseenter', () => {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(() => { });
+                        }
+                    });
+                    galleryItem.addEventListener('mouseleave', () => {
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+
+                galleryItem.addEventListener('click', () => openModal(item));
+                galleryElement.appendChild(galleryItem);
+            });
+        }
+
+        function openModal(item) {
+            const existingMedia = modalContent.querySelector('img, video');
+            if (existingMedia) existingMedia.remove();
+
+            let mediaElement;
+            if (item.type === 'image') {
+                mediaElement = document.createElement('img');
+                mediaElement.src = item.url;
+            } else {
+                mediaElement = document.createElement('video');
+                mediaElement.src = item.url;
+                mediaElement.controls = true;
+                mediaElement.autoplay = true;
+                mediaElement.playsinline = true;
+            }
+
+            modalContent.prepend(mediaElement);
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            const video = modalContent.querySelector('video');
+            if (video) video.pause();
+        }
+
+        closeModalBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeModal();
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', initGallery);
+    </script>
+</body>
+
+</html>
